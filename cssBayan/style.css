@@ -1,106 +1,272 @@
 @font-face {
-    font-family: "GeorgianNormal";
-    src: url("./assets/fonts/Gelasio-Regular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
+  font-family: "GeorgianNormal";
+  src: url("./assets/fonts/Gelasio-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "GeorgianBold";
+  src: url("./assets/fonts/Gelasio-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: bold;
+}
+
+/*Normalize*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: normal;
+}
+
+/*Normalize*/
+
+.body {
+  background-color: #eecad1;
+}
+.wrapper {
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 40%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5%;
+}
+.main-title {
+  padding: 1%;
+  width: 100%;
+  font-family: "GeorgianBold";
+  font-size: 300%;
+  color: #e50028;
+  text-align: center;
+  line-height: 200%;
+}
+.meme-list {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #e50028;
+  transition: 0.5s;
+  font-style: italic;
+}
+
+.meme-list:hover {
+  color: #084a08;
+}
+
+.meme-list:hover .label-icon .label-image {
+  opacity: 1;
+}
+
+.meme-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  transition: all 1s ease;
+}
+
+.meme-item:hover .image {
+  width: 100%;
+  height: 100%;
+}
+
+.meme-item:hover .label-icon {
+  transform: rotate(0.25turn);
+}
+
+.meme-input:checked ~ .meme-title .label-icon {
+  transform: rotate(0.25turn);
+}
+
+.meme-input:checked ~ .meme-title {
+  animation-name: changeColorText;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  color: #084a08;
+}
+
+.meme-title {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "GeorgianBold";
+  font-weight: bold;
+  font-size: 200%;
+  line-height: 130%;
+  background-color: #c8ede7;
+  border: solid #cc8899;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+@keyframes changeColorText {
+  0% {
+    color: #084a08;
+    background-color: #c8ede7;
   }
-  
-  @font-face {
-    font-family: "GeorgianBold";
-    src: url("./assets/fonts/Gelasio-Bold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: bold;
+
+  50% {
+    color: #e50028;
+    background-color: #53ec9f;
   }
-  
-  /*Normalize*/
-  * {
-    padding: 0;
-    margin: 0;
-    border: 0;
+  100% {
+    color: #084a08;
+    background-color: #c8ede7;
   }
-  
-  *,
-  *:before,
-  *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+}
+
+.label-icon {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "GeorgianBold";
+  font-size: 150%;
+  font-style: normal;
+  transition: all 1s ease;
+}
+
+.label-image {
+  opacity: 0;
+  transition: all 1s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.meme-input {
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+
+.meme-input:checked ~ .image {
+  width: 100%;
+  height: 100%;
+}
+.label-for-img {
+  font-size: 0%;
+}
+
+.meme-input:checked ~ .label-for-img .image {
+  width: 100%;
+  height: 100%;
+  animation-name: changeOpacityImage;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes changeOpacityImage {
+  0% {
+    opacity: 1;
   }
-  
-  :focus,
-  :active {
-    outline: none;
+
+  50% {
+    opacity: 0.3;
   }
-  
-  a:focus,
-  a:active {
-    outline: none;
+
+  100% {
+    opacity: 1;
   }
-  
-  nav,
-  footer,
-  header,
-  aside {
-    display: block;
-  }
-  
-  html,
-  body {
-    height: 100%;
-    width: 100%;
-    font-size: 100%;
-    line-height: 1;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-  }
-  
-  input,
-  button,
-  textarea {
-    font-family: inherit;
-  }
-  
-  input::-ms-clear {
-    display: none;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  button::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-  }
-  
-  a,
-  a:visited {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: none;
-  }
-  
-  ul li {
-    list-style: none;
-  }
-  
-  img {
-    vertical-align: top;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: inherit;
-    font-weight: normal;
-  }
-  
-  /*Normalize*/
+}
+
+.image {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 1s ease;
+}
