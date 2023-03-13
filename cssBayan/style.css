@@ -135,12 +135,13 @@ h6 {
   font-style: italic;
 }
 
-.meme-list:hover {
-  color: #084a08;
-}
-
-.meme-list:hover .label-icon .label-image {
-  opacity: 1;
+@media (hover: hover) {
+  .meme-list:hover {
+    color: #084a08;
+  }
+  .meme-list:hover .label-icon .label-image {
+    opacity: 1;
+  }
 }
 
 .meme-item {
@@ -152,22 +153,32 @@ h6 {
   transition: all 1s ease;
 }
 
-.meme-item:hover .image {
-  width: 100%;
-  height: 100%;
+@media (hover: hover) {
+  .meme-item:hover .image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .meme-item:hover .label-icon {
+    transform: rotate(0.25turn);
+  }
 }
 
-.meme-item:hover .label-icon {
-  transform: rotate(0.25turn);
+.meme-item:active .meme-title {
+  color:#4b0082;
+  background-color: #53ec9f;
 }
 
+.meme-item:active .label-for-img .image {
+  opacity: 0.3;
+}
 .meme-input:checked ~ .meme-title .label-icon {
   transform: rotate(0.25turn);
 }
 
 .meme-input:checked ~ .meme-title {
   animation-name: changeColorText;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: 1;
   color: #084a08;
@@ -242,7 +253,7 @@ h6 {
   width: 100%;
   height: 100%;
   animation-name: changeOpacityImage;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: 1;
 }
@@ -296,6 +307,13 @@ h6 {
 
   .label-icon {
     font-size: 120%;
+  }
+
+  .meme-list:focus {
+    color: #084a08;
+  }
+  .meme-list:focus .label-icon .label-image {
+    opacity: 1;
   }
 }
 
